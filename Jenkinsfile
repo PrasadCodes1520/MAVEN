@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('One') {
             steps {
-                echo 'Hi, this is Zulaikha from edureka'
+                echo 'Hi, this is pipeline demo'
             }
         }
         stage('Two') {
@@ -14,7 +14,7 @@ pipeline {
         stage('Three') {
             when {
                 expression {
-                    return env.BRANCH_NAME == 'master'
+                    return env.BRANCH_NAME == 'main'
                 }
             }
             steps {
@@ -28,18 +28,14 @@ pipeline {
                         echo "Running the unit test..."
                     }
                 }
-                stage('Integration test') {
-                    agent {
-                        docker {
-                            reuseNode true
-                            image 'ubuntu'
-                        }
-                    }
+                stage('Security Test') {
                     steps {
-                        echo "Running the integration test..."
+                        echo "Running security tests..."
+                        sh 'echo "Running security test"'
                     }
                 }
             }
         }
     }
 }
+
