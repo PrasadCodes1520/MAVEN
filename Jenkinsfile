@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('One') {
             steps {
-                echo 'Hi, this is pipeline demo'
+                echo 'Hi, this is first pipeline'
             }
         }
         stage('Two') {
@@ -28,14 +28,18 @@ pipeline {
                         echo "Running the unit test..."
                     }
                 }
-                stage('Security Test') {
-                    steps {
-                        echo "Running security tests..."
-                        sh 'echo "Running security test"'
-                    }
+                // stage('Integration test') {
+                //     agent {
+                //         docker {
+                //             reuseNode true
+                //             image 'ubuntu'
+                //         }
+                //     }
+                //     steps {
+                //         echo "Running the integration test..."
+                //     }
                 }
             }
         }
     }
 }
-
