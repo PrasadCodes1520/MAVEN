@@ -3,25 +3,22 @@ pipeline {
     stages {
         stage('One') {
             steps {
-                echo 'Hi, This is first Pipeline Demo'
-                sh 'echo "Executing task one"'
+                echo 'Hi, this is Zulaikha from edureka'
             }
         }
         stage('Two') {
             steps {
                 input 'Do you want to proceed?'
-                sh 'echo "User input received, proceeding..."'
             }
         }
         stage('Three') {
             when {
                 expression {
-                    return env.BRANCH_NAME == 'main'
+                    return env.BRANCH_NAME == 'master'
                 }
             }
             steps {
                 echo "Hello"
-                sh 'echo "Executing task three on main branch"'
             }
         }
         stage('Four') {
@@ -29,7 +26,6 @@ pipeline {
                 stage('Unit Test') {
                     steps {
                         echo "Running the unit test..."
-                        sh 'echo "Running unit test"'
                     }
                 }
                 stage('Integration test') {
@@ -41,13 +37,6 @@ pipeline {
                     }
                     steps {
                         echo "Running the integration test..."
-                        sh 'echo "Running integration test"'
-                    }
-                }
-                stage('Security test') {
-                    steps {
-                        echo "Running security tests..."
-                        sh 'echo "Running security test"'
                     }
                 }
             }
